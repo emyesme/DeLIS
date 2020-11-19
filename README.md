@@ -11,10 +11,10 @@ Some of the important requirements to perform the code are:
 - the repository of [intensity normalization](https://github.com/jcreinhold/intensity-normalization)
 - [Synthseg](https://github.com/BBillot/SynthSeg)
 
-However, this requirements can be fulfil downloading the following docker image
+However, this requirements can be fulfil downloading the following docker image \\
 ``` docker pull emilyesme/tf_delis ```
 
-**Note:** The DeLIS method use tensorflow backend to use the Synthseg. Therefore, it is necessary to have at less 10gb of ram in the host computer
+**Note:** The DeLIS method use tensorflow backend to use the Synthseg. Therefore, it is necessary to have at less **10gb** of ram in the host computer
 
 ## Instructions
 
