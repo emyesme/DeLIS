@@ -5,10 +5,13 @@ import shutil
 DIRSYNTHSEG = join(sep, "Synthseg", "scripts",
                    "launch_scripts_from_terminal", "SynthSeg_predict.py")
 
+# run_Synthseg: string, string -> void
+# given the infile path use the SynthSeg tool to get the labelled map
+# and the posterior output to fill the gaps present in the segmentation
+
 
 def run_SynthSeg(infile, outfolder):
     import subprocess
-    import time
     # turn on trial env
     subprocess.call(["python", DIRSYNTHSEG, infile, outfolder + sep,
                      "--out_posteriors", outfolder + sep + "posteriors.nii.gz"])
@@ -20,7 +23,7 @@ def run_SynthSeg(infile, outfolder):
                                 [0]+'_seg.nii.gz')).get_data()
     else:
         namefile = name.split(".")[0]+'_seg.nii.gz'
-        #raise ValueError("%s was not created", namefile)
+        raise ValueError("%s was not created", namefile)
 
     # filling gaps of lesions
     posteriors = nib.load(join(outfolder, "posteriors.nii.gz"))
@@ -34,6 +37,13 @@ def run_SynthSeg(infile, outfolder):
     # save output
     nib.save(nib.Nifti1Image(Acor, posteriors.affine), join(
         outfolder, name.split(".")[0]+'_seg.nii.gz'))
+
+# run_intensity_delis: string, string -> void
+# perform Synthseg to the infile image and load the labelled map
+# take the labels that correspond to the white matter tissue and create the mask
+# to the white matter mask perform and erosion to discard outliers
+# and get the last mode of the white matter values
+# finally given the mode normalise and save the image
 
 
 def run_intensity_delis(infile, outfolder):
@@ -55,7 +65,7 @@ def run_intensity_delis(infile, outfolder):
                                 [0]+'_seg.nii.gz')).get_data()
     else:
         namefile = name.split(".")[0]+'_seg.nii.gz'
-        #raise ValueError("%s was not created" % namefile)
+        raise ValueError("%s was not created" % namefile)
 
     # 2.get the white matter from the mask
     mask = np.logical_or(seg_vol == 18, seg_vol == 3)
