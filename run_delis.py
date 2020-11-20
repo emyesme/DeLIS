@@ -36,7 +36,7 @@ def main():
         sys.exit(2)
 
     for option, argument in myopts:
-        if ((option == "-b") and isfile(argument) and allowedfile(argument)):
+        if ((option == "-b") and isfile(argument) and allowed_file(argument)):
             baselineFile = argument
         elif ((option == "-s") and (argument in ISMETHODS)):
             isMethod = argument
