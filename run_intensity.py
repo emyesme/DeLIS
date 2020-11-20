@@ -1,8 +1,9 @@
 from os import system, getcwd, makedirs, walk, rename, remove
 from os.path import exists, isfile, join, sep
 import shutil
+import sys
 
-DIRSYNTHSEG = join(sep, "Synthseg", "scripts",
+DIRSYNTHSEG = join(sep, "SynthSeg", "scripts",
                    "launch_scripts_from_terminal", "SynthSeg_predict.py")
 
 # run_Synthseg: string, string -> void
