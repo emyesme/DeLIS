@@ -2,6 +2,8 @@ from os import system, getcwd, makedirs, walk, rename, remove
 from os.path import exists, isfile, join, sep
 import shutil
 import sys
+import nibabel as nib
+import numpy as np
 
 DIRSYNTHSEG = join(sep, "SynthSeg", "scripts",
                    "launch_scripts_from_terminal", "SynthSeg_predict.py")
