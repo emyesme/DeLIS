@@ -36,7 +36,7 @@ Instructions:
 
 ```
 Usage:  python run_delis.py
-        -b path to MRI T1-w scan (nii or nii.gz file)
+        -b path to MRI T1-w scan (nii.gz file)
         -o output directory
 
 ```
